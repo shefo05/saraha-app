@@ -1,0 +1,120 @@
+{
+  "info": {
+    "_postman_id": "42937d9c-5be4-4827-820e-56f3fbc68ed5",
+    "name": "saraha-app",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48436583",
+    "_collection_link": "https://go.postman.co/collection/48436583-42937d9c-5be4-4827-820e-56f3fbc68ed5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "signup",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\":\"k6@ex.com  \",\n    \"password\": \"123456\",\n    \"phone\": \"01354567890\",\n    \"name\": \"kBghj\",\n    \"age\":\"19\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/signup",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "signup"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "signin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"k6@ex.com  \",\n    \"password\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/signin",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "signin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWIwNzE1NTAxY2QxYTk0NzE5Mzk2YjQiLCJpYXQiOjE3NzMxOTcwNTAsImV4cCI6MTc3MzIwMDY1MH0.7yPAf2rag0quXg_5yurRxhobvn2mcYXgqhpMoxpUC3o",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/user",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "user"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "refresh-token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOnsic3ViIjoiNjliMDcxNTUwMWNkMWE5NDcxOTM5NmI0In0sImlhdCI6MTc3MzE5MDc3NywiZXhwIjoxODA0NzQ4Mzc3fQ.2t_1sFywA7ZnuLynI_XV2vOE0R-z_2rlTky_r-vf8rI",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/auth/refresh-token",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "refresh-token"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
