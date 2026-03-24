@@ -1,7 +1,7 @@
-import { DBRepositort } from "../../DB.repository.js";
+import { DBRepository } from "../../DB.repository.js";
 import { User } from "./user.model.js";
 
-class UserRepository extends DBRepositort {
+class UserRepository extends DBRepository {
   constructor() {
     super(User);
   }

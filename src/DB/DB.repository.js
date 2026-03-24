@@ -1,4 +1,4 @@
-export class DBRepositort {
+export class DBRepository {
   model;
   constructor(model) {
     this.model = model;
@@ -9,7 +9,7 @@ export class DBRepositort {
     return await doc.save();
   }
 
-  async update(filter, update, options = {}) {
+  async update(filter, update, options = { new: true }) {
     return await this.model.findOneAndUpdate(filter, update, options);
   }
 

@@ -17,7 +17,9 @@ export class UnauthorizedException extends Error {
 }
 
 export class BadReqException extends Error {
-  constructor(message) {
-    super(message, { cause: 400 });
+  details;
+  constructor(message, details = []) {
+    super(message, { cause: 400 }); 
+    this.details = details;
   }
 }
