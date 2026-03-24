@@ -13,13 +13,49 @@
         "method": "POST",
         "header": [],
         "body": {
-          "mode": "raw",
-          "raw": "{\n    \"email\":\"k6@ex.com  \",\n    \"password\": \"123456\",\n    \"phone\": \"01354567890\",\n    \"name\": \"kBghj\",\n    \"age\":\"19\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "shefo",
+              "type": "text"
+            },
+            {
+              "key": "email",
+              "value": "shefoelgendy581@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "gender",
+              "value": "1",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "password",
+              "value": "Ali@1234",
+              "type": "text"
+            },
+            {
+              "key": "rePassword",
+              "value": "Ali@1234",
+              "type": "text"
+            },
+            {
+              "key": "img",
+              "type": "file",
+              "uuid": "847e2c31-cf68-4a60-bd3f-d07889554060",
+              "src": "/home/abdelshafy/Pictures/Screenshots/Screenshot from 2026-02-10 20-24-22.png",
+              "disabled": true
+            },
+            {
+              "key": "role",
+              "value": "0",
+              "type": "text",
+              "uuid": "91e7c05f-7e66-42c5-8641-b09fd550f3c0",
+              "disabled": true
             }
-          }
+          ]
         },
         "url": {
           "raw": "http://localhost:3000/auth/signup",
@@ -42,13 +78,19 @@
         "method": "POST",
         "header": [],
         "body": {
-          "mode": "raw",
-          "raw": "{\n    \"email\": \"k6@ex.com  \",\n    \"password\": \"123456\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "Ali@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "Ali@1234",
+              "type": "text"
             }
-          }
+          ]
         },
         "url": {
           "raw": "http://localhost:3000/auth/signin",
@@ -111,6 +153,101 @@
           "path": [
             "auth",
             "refresh-token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update profile picture",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMxZjViYzdjYzAxZGUwYzA3MDFmYWIiLCJpYXQiOjE3NzQzMTkwNDYsImV4cCI6MTc3NDMyMjY0Nn0.gVv7U2tM-X-jC5nj3X2sX20CPfUQB3AlEYHWu61AL9A",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "pp",
+              "type": "file",
+              "uuid": "0cdee996-f3b9-49e4-9e97-3758662c6266",
+              "src": "/home/abdelshafy/Pictures/Screenshots/Screenshot from 2026-02-10 20-24-22.png"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/user/upload-profile-pic",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "user",
+            "upload-profile-pic"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "verify email",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \n    \"email\":\"shefoelgendy581@gmail.com\",\n    \"otp\":\"282685\"\n    \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/verify-email",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "verify-email"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "resend OTP",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \n    \"email\":\"shefoelgendy581@gmail.com\"\n    \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/send-otp",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "send-otp"
           ]
         }
       },
