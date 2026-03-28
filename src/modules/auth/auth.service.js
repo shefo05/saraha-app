@@ -3,11 +3,13 @@ import {
   compare,
   ConflictException,
   encryption,
+  generateTokens,
   hash,
   sendMail,
   SYS_MESSAGE,
 } from "../../common/index.js";
 import { otpRepository } from "../../DB/models/otp/otp.repository.js";
+import { tokenRepository } from "../../DB/models/token/token.repository.js";
 import { userRepository } from "../../DB/models/user/user.repository.js";
 import { checkUserExist, createUser } from "../users/users.service.js";
 import jwt from "jsonwebtoken";
@@ -61,7 +63,7 @@ export const signinAuth = async ({ email, password }) => {
   // userExist.password = undefined;
 
   const { accessToken, refreshToken } = generateTokens({
-    sub: authenticatedUser._id,
+    sub: userExist._id,
   });
   return { accessToken, refreshToken };
 };
@@ -104,4 +106,57 @@ export const verifyEmail = async (body) => {
   await otpRepository.deleteOne({ _id: otpDoc._id });
 
   return true;
+};
+
+export const logoutFromAllDevices = async (user) => {
+  await userRepository.update(
+    { _id: user._id },
+    { credentialsUpdatedAt: Date.now() },
+  );
+};
+
+export const logout = async (tokenPayload) => {
+  await tokenRepository.create({
+    token: tokenPayload.jti,
+    userId: tokenPayload.sub,
+    expiresAt: tokenPayload.exp * 1000,
+  });
+};
+
+async function googleVerifyToken(idToken) {
+  const client = new OAuth2Client(
+    "616442572534-iobv83qf5b9r36v4l6k2te18effkpv7u.apps.googleusercontent.com",
+  );
+  const ticket = await client.verifyIdToken({ idToken });
+  return ticket.getPayload();
+}
+
+export const loginWithGoogle = async (idToken) => {
+  
+  const googlePayload = await googleVerifyToken(idToken);
+  if (googlePayload.email_verified == false) {
+    throw new BadReqException("refused email from google");
+  }
+  const user = await userRepository.getOne({ email: googlePayload.email });
+
+  if (!user) {
+    const createdUser = await userRepository.create({
+      email: googlePayload.email,
+      profilePic: googlePayload.picture,
+      name: googlePayload.name,
+      isEmailVerified: true,
+      provider: "google",
+    });
+    return generateTokens({
+      sub: createUser._id,
+      role: createdUser.role,
+      provider: createdUser.provider,
+    });
+  }
+
+  return generateTokens({
+    sub: user._id,
+    role: user.role,
+    provider: user.provider,
+  });
 };

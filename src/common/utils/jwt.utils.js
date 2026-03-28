@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
+import crypto from "node:crypto";
 
-
-export const generateToken = (payload,secret, expireTime) => {
+const generateToken = (payload, secret, expireTime) => {
+  payload.jti = crypto.randomBytes(10).toString("hex");
   const token = jwt.sign(payload, secret, {
     expiresIn: expireTime,
   });

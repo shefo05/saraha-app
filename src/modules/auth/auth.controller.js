@@ -2,15 +2,18 @@ import { Router } from "express";
 import {
   signup,
   signinAuth,
-  verifyToken,
   getTokens,
   verifyEmail,
   sendOtp,
+  logoutFromAllDevices,
+  logout,
+  loginWithGoogle,
 } from "./auth.service.js";
 import { SYS_MESSAGE } from "../../common/index.js";
-import { validationLayer } from "../../middlewares/index.js";
+import { isAuthenticated, validationLayer } from "../../middlewares/index.js";
 import { loginSchema, signupSchema } from "./auth.validation.js";
 import { fileUpload } from "../../common/utils/multer.utils.js";
+import { OAuth2Client } from "google-auth-library";
 
 const router = Router();
 
@@ -70,6 +73,35 @@ router.post("/send-otp", async (req, res, next) => {
   return res
     .status(200)
     .json({ message: "otp sent successfully !", success: true });
+});
+
+router.patch(
+  "/logout-from-all-devices",
+  isAuthenticated,
+  async (req, res, next) => {
+    await logoutFromAllDevices(req.user);
+    return res
+      .status(200)
+      .json({ message: "logout from all devices", success: true });
+  },
+);
+
+router.post("/logout", isAuthenticated, async (req, res, next) => {
+  await logout(req.payload);
+  return res
+    .status(200)
+    .json({ message: "logout from device successfully", success: true });
+});
+
+router.post("/login-with-google", async (req, res, next) => {
+  const { idToken } = req.body;
+  const { accessToken, refreshToken } = await loginWithGoogle(idToken);
+
+  return res.status(200).json({
+    message: "login successfully",
+    success: true,
+    data: { accessToken, refreshToken },
+  });
 });
 
 export default router;

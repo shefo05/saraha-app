@@ -1,10 +1,13 @@
 import express from "express";
 import { connectDB } from "./DB/connection.js";
 import { authRouter, userRouter } from "./modules/index.js";
+import cors from "cors"
 const app = express();
 
 const port = 3000;
+connectDB();
 
+app.use(cors("*"))
 app.use("/uploads",express.static("uploads"))
 
 app.use(express.json());
@@ -20,7 +23,6 @@ app.use((error, req, res, next) => {
   });
 });
 
-connectDB();
 app.listen(port, () => {
   console.log("app in listening on port", port);
 });

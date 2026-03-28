@@ -14,9 +14,17 @@ const schema = new Schema(
       unique: true,
       trim: true,
     },
+    provider: {
+      type: String,
+      enum: ["google", "system"],
+      default: "system",
+    },
     password: {
       type: String,
-      required: true,
+      required: function () {
+        if (this.provider == "google") return false;
+        else return true;
+      },
     },
     phone: {
       type: String,
@@ -37,9 +45,19 @@ const schema = new Schema(
       default: SYS_ROLE.user,
     },
     profilePic: String,
+    coverPic: String,
+
     isEmailVerified: {
       type: Boolean,
       default: false,
+    },
+    credentialsUpdatedAt: {
+      type: Date,
+      default: Date.now(),
+    },
+    visitorCount: {
+      type: Number,
+      default: 0,
     },
   },
 

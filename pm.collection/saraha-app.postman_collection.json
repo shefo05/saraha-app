@@ -17,12 +17,12 @@
           "formdata": [
             {
               "key": "name",
-              "value": "shefo",
+              "value": "ali",
               "type": "text"
             },
             {
               "key": "email",
-              "value": "shefoelgendy581@gmail.com",
+              "value": "ali@gmail.com",
               "type": "text"
             },
             {
@@ -82,7 +82,7 @@
           "formdata": [
             {
               "key": "email",
-              "value": "Ali@gmail.com",
+              "value": "shefoelgendy581@gmail.com",
               "type": "text"
             },
             {
@@ -108,25 +108,26 @@
       "response": []
     },
     {
-      "name": "get profile",
+      "name": "get profile by id",
       "request": {
         "method": "GET",
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWIwNzE1NTAxY2QxYTk0NzE5Mzk2YjQiLCJpYXQiOjE3NzMxOTcwNTAsImV4cCI6MTc3MzIwMDY1MH0.7yPAf2rag0quXg_5yurRxhobvn2mcYXgqhpMoxpUC3o",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMyZWViMzc1ZDIxZDE2NGUzMDg1NTEiLCJqdGkiOiI0NGNmMDY1M2ZhY2QyMmE0M2ZjNiIsImlhdCI6MTc3NDY4ODgxNCwiZXhwIjoxNzc0NjkyNDE0fQ.u1XWKqyQLKsbTZ2fLEPC00Ued7Y0DUfSaPTJNllB9y0",
             "type": "text"
           }
         ],
         "url": {
-          "raw": "http://localhost:3000/user",
+          "raw": "http://localhost:3000/user/69c797c420388b3fb15ee289",
           "protocol": "http",
           "host": [
             "localhost"
           ],
           "port": "3000",
           "path": [
-            "user"
+            "user",
+            "69c797c420388b3fb15ee289"
           ]
         }
       },
@@ -159,13 +160,13 @@
       "response": []
     },
     {
-      "name": "update profile picture",
+      "name": "upload profile picture",
       "request": {
         "method": "PATCH",
         "header": [
           {
             "key": "Authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMxZjViYzdjYzAxZGUwYzA3MDFmYWIiLCJpYXQiOjE3NzQzMTkwNDYsImV4cCI6MTc3NDMyMjY0Nn0.gVv7U2tM-X-jC5nj3X2sX20CPfUQB3AlEYHWu61AL9A",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMyZWViMzc1ZDIxZDE2NGUzMDg1NTEiLCJqdGkiOiJjYzkwYmNmYzM4M2VjMTgyMDlkNiIsImlhdCI6MTc3NDY4OTU0NSwiZXhwIjoxNzc0NjkzMTQ1fQ.bCC07YEwr1A9DHtLkr0tuZC3Cul7_TBCJHbuQJZCIBA",
             "type": "text"
           }
         ],
@@ -176,7 +177,7 @@
               "key": "pp",
               "type": "file",
               "uuid": "0cdee996-f3b9-49e4-9e97-3758662c6266",
-              "src": "/home/abdelshafy/Pictures/Screenshots/Screenshot from 2026-02-10 20-24-22.png"
+              "value": null
             }
           ]
         },
@@ -248,6 +249,151 @@
           "path": [
             "auth",
             "send-otp"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "logout from all devices",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMyZWViMzc1ZDIxZDE2NGUzMDg1NTEiLCJpYXQiOjE3NzQ0MDQ2MTMsImV4cCI6MTc3NDQwODIxM30.ioTdo6ydZHJ4BsiQJpJDDzSDxw_H3pX45AXlq4u_xlM",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/logout-from-all-devices",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "logout-from-all-devices"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMyZWViMzc1ZDIxZDE2NGUzMDg1NTEiLCJqdGkiOiIzMTJhNmQ2YjM4YWJlNDEwNTlkNiIsImlhdCI6MTc3NDQwODAyMCwiZXhwIjoxNzc0NDExNjIwfQ.KA8nPxrHbOlyxg1rQeiQGeL_90ht7xSxaP4TOS1gKNY",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "shefoelgendy581@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "Ali@1234",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/logout",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "logout"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete profile picture",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMyZWViMzc1ZDIxZDE2NGUzMDg1NTEiLCJqdGkiOiIzZGM0MWI2YzFiNDZkYzdiMjNlZSIsImlhdCI6MTc3NDY4MzEyMSwiZXhwIjoxNzc0Njg2NzIxfQ.kSmtTmdS4lHeGAT5rGARlrUttD-P2lH3rhW3j2s21QQ",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "pp",
+              "type": "file",
+              "uuid": "0cdee996-f3b9-49e4-9e97-3758662c6266",
+              "src": "/home/abdelshafy/Pictures/Screenshots/Screenshot from 2026-02-13 23-00-32.png"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/user/delete-profile-pic",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "user",
+            "delete-profile-pic"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "upload cover pic",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMyZWViMzc1ZDIxZDE2NGUzMDg1NTEiLCJqdGkiOiJjYzkwYmNmYzM4M2VjMTgyMDlkNiIsImlhdCI6MTc3NDY4OTU0NSwiZXhwIjoxNzc0NjkzMTQ1fQ.bCC07YEwr1A9DHtLkr0tuZC3Cul7_TBCJHbuQJZCIBA",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "pp",
+              "type": "file",
+              "uuid": "d0a12f07-1ac3-473b-9c5f-98fadb334f0d",
+              "value": null
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/user/upload-cover-pic",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "user",
+            "upload-cover-pic"
           ]
         }
       },
