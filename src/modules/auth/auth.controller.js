@@ -8,12 +8,20 @@ import {
   logoutFromAllDevices,
   logout,
   loginWithGoogle,
+  twoStepVerfication,
+  resetPassword,
 } from "./auth.service.js";
-import { SYS_MESSAGE } from "../../common/index.js";
+import {
+  generateTokens,
+  NotFoundException,
+  SYS_MESSAGE,
+} from "../../common/index.js";
 import { isAuthenticated, validationLayer } from "../../middlewares/index.js";
 import { loginSchema, signupSchema } from "./auth.validation.js";
 import { fileUpload } from "../../common/utils/multer.utils.js";
 import { OAuth2Client } from "google-auth-library";
+import { checkUserExist } from "../users/users.service.js";
+import { userRepository } from "../../DB/models/user/user.repository.js";
 
 const router = Router();
 
@@ -37,12 +45,11 @@ router.post(
   fileUpload().none(),
   validationLayer(loginSchema),
   async (req, res, next) => {
-    const { accessToken, refreshToken } = await signinAuth(req.body);
+    const signinObj = await signinAuth(req.body);
 
     return res.status(200).json({
-      message: "login successfully",
       success: true,
-      data: { accessToken, refreshToken },
+      data: signinObj,
     });
   },
 );
@@ -102,6 +109,23 @@ router.post("/login-with-google", async (req, res, next) => {
     success: true,
     data: { accessToken, refreshToken },
   });
+});
+
+router.patch("/2-step-verfication", async (req, res, next) => {
+  const obj = await twoStepVerfication(req.body);
+
+  return res.status(200).json({
+    message: "logged in successfully",
+    success: true,
+    data: obj,
+  });
+});
+
+router.patch("/reset-password", isAuthenticated, async (req, res, next) => {
+  await resetPassword(req.user, req.body);
+  return res
+    .status(200)
+    .json({ message: "password updated successfully", success: true });
 });
 
 export default router;

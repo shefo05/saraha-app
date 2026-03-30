@@ -2,10 +2,12 @@ import express from "express";
 import { connectDB } from "./DB/connection.js";
 import { authRouter, userRouter } from "./modules/index.js";
 import cors from "cors"
+import { redisConnect } from "./DB/redis.connection.js";
 const app = express();
 
 const port = 3000;
 connectDB();
+redisConnect();
 
 app.use(cors("*"))
 app.use("/uploads",express.static("uploads"))

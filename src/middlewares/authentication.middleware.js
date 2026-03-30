@@ -4,6 +4,7 @@ import {
   SYS_MESSAGE,
 } from "../common/index.js";
 import { tokenRepository } from "../DB/models/token/token.repository.js";
+import { redisClient } from "../DB/redis.connection.js";
 import { verifyToken } from "../modules/auth/auth.service.js";
 import { checkUserExist } from "../modules/users/users.service.js";
 
@@ -24,7 +25,7 @@ export const isAuthenticated = async (req, res, next) => {
     throw new BadReqException(SYS_MESSAGE.user.failToUpdate);
   }
 
-  const tokenExist = await tokenRepository.getOne({ token: payload.jti });
+  const tokenExist = await redisClient.get( `bl_${payload.jti}` );
   if (tokenExist) {
     throw new BadReqException("invalid token, signin again");
   }

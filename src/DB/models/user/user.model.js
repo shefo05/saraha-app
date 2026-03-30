@@ -49,7 +49,7 @@ const schema = new Schema(
 
     isEmailVerified: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     credentialsUpdatedAt: {
       type: Date,
@@ -58,6 +58,14 @@ const schema = new Schema(
     visitorCount: {
       type: Number,
       default: 0,
+    },
+    twoStepVer: {
+      type: Boolean,
+      default: false,
+    },
+    isLoggedOut: {
+      type: Boolean,
+      default: true,
     },
   },
 
