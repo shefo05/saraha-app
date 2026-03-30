@@ -17,12 +17,12 @@
           "formdata": [
             {
               "key": "name",
-              "value": "ali",
+              "value": "shefo",
               "type": "text"
             },
             {
               "key": "email",
-              "value": "ali@gmail.com",
+              "value": "shefoelgendy581@gmail.com",
               "type": "text"
             },
             {
@@ -87,7 +87,7 @@
             },
             {
               "key": "password",
-              "value": "Ali@1234",
+              "value": "Ali@12345",
               "type": "text"
             }
           ]
@@ -114,12 +114,12 @@
         "header": [
           {
             "key": "authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMyZWViMzc1ZDIxZDE2NGUzMDg1NTEiLCJqdGkiOiI0NGNmMDY1M2ZhY2QyMmE0M2ZjNiIsImlhdCI6MTc3NDY4ODgxNCwiZXhwIjoxNzc0NjkyNDE0fQ.u1XWKqyQLKsbTZ2fLEPC00Ued7Y0DUfSaPTJNllB9y0",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM5Yzc1ODVkYmI1ZDE3MGQyMWIyZGIiLCJqdGkiOiIxNTA1YTgyMGYxYmM2NzExMjJmOSIsImlhdCI6MTc3NDgzMTQ2OCwiZXhwIjoxNzc0ODM1MDY4fQ.V8IXy1BqflvvkBCFmuEa-zXZf2zkWYM5N8YmPIX38AA",
             "type": "text"
           }
         ],
         "url": {
-          "raw": "http://localhost:3000/user/69c797c420388b3fb15ee289",
+          "raw": "http://localhost:3000/user/69c9743201f69b426cf2d5fa",
           "protocol": "http",
           "host": [
             "localhost"
@@ -127,7 +127,7 @@
           "port": "3000",
           "path": [
             "user",
-            "69c797c420388b3fb15ee289"
+            "69c9743201f69b426cf2d5fa"
           ]
         }
       },
@@ -203,7 +203,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \n    \"email\":\"shefoelgendy581@gmail.com\",\n    \"otp\":\"282685\"\n    \n}",
+          "raw": "{\n    \n    \"email\":\"shefoelgendy581@gmail.com\",\n    \"otp\":\"196453\"\n    \n}",
           "options": {
             "raw": {
               "language": "json"
@@ -226,7 +226,7 @@
       "response": []
     },
     {
-      "name": "resend OTP",
+      "name": "send OTP",
       "request": {
         "method": "POST",
         "header": [],
@@ -291,7 +291,7 @@
         "header": [
           {
             "key": "Authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWMyZWViMzc1ZDIxZDE2NGUzMDg1NTEiLCJqdGkiOiIzMTJhNmQ2YjM4YWJlNDEwNTlkNiIsImlhdCI6MTc3NDQwODAyMCwiZXhwIjoxNzc0NDExNjIwfQ.KA8nPxrHbOlyxg1rQeiQGeL_90ht7xSxaP4TOS1gKNY",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM5Y2JmODdjMzI4NDQ5NzNlNTQ2NzQiLCJqdGkiOiIyNWNkNGMwOTgwNDBmMmQwY2Q2NSIsImlhdCI6MTc3NDgzMjY0OCwiZXhwIjoxNzc0ODM2MjQ4fQ.KhNYrOCcq9VnpZzKeCx5_hT3GUaXdaysT9NOuUo5F28",
             "type": "text"
           }
         ],
@@ -394,6 +394,70 @@
           "path": [
             "user",
             "upload-cover-pic"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2-step-verfication",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \n    \"email\":\"shefoelgendy581@gmail.com\",\n    \"otp\":\"200945\"\n    \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/2-step-verfication",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "2-step-verfication"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "reset password",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM5Y2JmODdjMzI4NDQ5NzNlNTQ2NzQiLCJqdGkiOiI4OGRjNGY2YTg4YTlmMWMxNTNjZiIsImlhdCI6MTc3NDgzMzk0NCwiZXhwIjoxNzc0ODM3NTQ0fQ.vz20vxK4M_Zw3fwZCdbcYgtfk0STZDuofIyTRv-fWZc",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \n    \"password\":\"Ali@12345\",\n    \"rePassword\":\"Ali@1245\"\n    \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/reset-password",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "auth",
+            "reset-password"
           ]
         }
       },
