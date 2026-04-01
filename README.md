@@ -54,8 +54,7 @@ A fully featured backend API for anonymous messaging system (Saraha-like app) bu
 ---
 
 ## 📬 Postman Collection
-👉 Add your Postman link here
-
+https://shafeelgendy-7884847.postman.co/workspace/node-work~6417598d-f5d0-42d9-bd95-8ed585cac826/collection/48436583-42937d9c-5be4-4827-820e-56f3fbc68ed5?action=share&source=copy-link&creator=48436583
 ---
 
 ## 🚀 How to Run
